@@ -1,0 +1,16 @@
+{
+  "name": "playwrighte2eautomation",
+  "version": "1.0.0",
+  "description": "Automated E2E testing with Playwright",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tarik Deliktas",
+  "license": "ISC",
+  "dependencies": {
+    "@playwright/test": "^1.38.1",
+    "playwright": "^1.38.1",
+    "prettier": "^3.0.3"
+  }
+}
