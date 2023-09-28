@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test'
 test.describe.parallel("Login / Logout Flow", () => {
     // Before Hook
     test.beforeEach(async ({ page }) => {
-        await page.goto('http://zero.webappsecurity.com/')
+        await page.goto('http://zero.webappsecurity.com/index.html')
     })
 
     // Negative test cases
@@ -24,8 +24,10 @@ test.describe.parallel("Login / Logout Flow", () => {
         await page.type("#user_password",  "password")
         await page.click("text=Sign in")
 
-        const accountSummaryTab = await page.locator('#account_summary_tab')
-        await expect(accountSummaryTab).toBeVisible()
+        await page.goto('http://zero.webappsecurity.com/bank/transfer-funds.html')
+
+        const transferFunds = await page.locator('.board-header')
+        await expect(transferFunds).toContainText('Transfer Money & Make Payments')
 
         // Logout
         await page.goto('http://zero.webappsecurity.com/logout.html')
