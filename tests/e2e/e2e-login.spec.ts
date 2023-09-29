@@ -1,30 +1,27 @@
 import { test, expect } from '@playwright/test'
+import { LoginPage } from '../../page-objects/e2e-login.page'
 
 test.describe.parallel("Login / Logout Flow", () => {
+    let loginPage: LoginPage
     // Before Hook
     test.beforeEach(async ({ page }) => {
-        await page.goto('http://zero.webappsecurity.com/index.html')
+        loginPage = new LoginPage(page)
+        await loginPage.gotoIndex()
     })
 
     // Negative test cases
     test("Negative Scenario for Login", async ({ page }) => {
         await page.click("#signin_button")
-        await page.type("#user_login", "invalidUsername")
-        await page.type("#user_password",  "invalidPassword")
-        await page.click("text=Sign in")
-       
-        const errorMessage = await page.locator('.alert-error')
-        await expect(errorMessage).toContainText('Login and/or password are wrong.')
+        await loginPage.login("invalidUsername", "invalidPassword")
+        await loginPage.assertErrorMessage()
     })
 
     // Positive test cases + Logout
     test("Positive Scenario for Login + Logout", async({ page }) => {
         await page.click("#signin_button")
-        await page.type("#user_login", "username")
-        await page.type("#user_password",  "password")
-        await page.click("text=Sign in")
+        await loginPage.login("username", "password")
 
-        await page.goto('http://zero.webappsecurity.com/bank/transfer-funds.html')
+        await loginPage.gotoTransferFunds()
 
         const transferFunds = await page.locator('.board-header')
         await expect(transferFunds).toContainText('Transfer Money & Make Payments')
