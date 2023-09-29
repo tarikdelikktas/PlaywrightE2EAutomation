@@ -17,10 +17,6 @@ export class LoginPage {
         this.errorMessage = page.locator(".alert-error")
     }
     // Define login page methods
-    async gotoIndex() {
-        await this.page.goto('http://zero.webappsecurity.com/index.html')
-    }
-
     async gotoTransferFunds() {
         await this.page.goto('http://zero.webappsecurity.com/bank/transfer-funds.html')
     }
