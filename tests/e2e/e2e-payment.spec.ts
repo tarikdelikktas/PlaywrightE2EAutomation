@@ -1,11 +1,18 @@
 import { test, expect } from '@playwright/test'
+import { HomePage } from '../../page-objects/e2e-home.page'
+import { LoginPage } from '../../page-objects/e2e-login.page'
 
 test.describe("New Payment", () => {
+    let homaPage: HomePage
+    let loginPage: LoginPage
+
     test.beforeEach(async ({ page }) => {
-        await page.goto('http://zero.webappsecurity.com/index.html')
-        await page.click("#signin_button")
-        await page.type("#user_login", "username")
-        await page.type("#user_password",  "password")
+        homaPage = new HomePage(page)
+        loginPage = new LoginPage(page)
+
+        homaPage.gotoIndex()
+        homaPage.clickOnSignIn()
+        loginPage.login('username', 'password')
 
         // SSL Certificate error fix by directing url
         await page.goto('http://zero.webappsecurity.com/bank/pay-bills.html')
