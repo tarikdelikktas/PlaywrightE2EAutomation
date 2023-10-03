@@ -14,13 +14,13 @@ export class FeedbackPage {
         this.nameInput = page.locator("#name")
         this.emailInput = page.locator('#email')
         this.subjectInput = page.locator("#subject")
-        this.commentInput = page.locator("comment")
+        this.commentInput = page.locator("#comment")
         this.clearButton = page.locator("input[name='clear']")
         this.submitButton = page.locator("input[type='submit']")
         this.feedbackTitile = page.locator('#feedback-title')
     }
 
-    async fillForm  (
+    async fillForm(
         name: string, 
         email: string, 
         subject: string, 
@@ -32,7 +32,7 @@ export class FeedbackPage {
         await this.commentInput.type(comment)
     }
 
-    async resetButton() {
+    async resetForm() {
         await this.clearButton.click()
     }
 
