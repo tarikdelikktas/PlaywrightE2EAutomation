@@ -13,7 +13,7 @@ export class HomePage {
         this.linkFeedback = page.locator('#feedback')
     }
 
-    async gotoIndex() {
+    async visit() {
         await this.page.goto('http://zero.webappsecurity.com/index.html')
     }
 

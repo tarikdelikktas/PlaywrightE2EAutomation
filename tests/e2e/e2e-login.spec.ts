@@ -11,7 +11,7 @@ test.describe.parallel("Login / Logout Flow", () => {
         loginPage = new LoginPage(page)
         homePage = new HomePage(page)
 
-        await homePage.gotoIndex()
+        await homePage.visit()
     })
 
     // Negative test cases

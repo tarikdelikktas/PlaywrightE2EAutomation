@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test'
 import { HomePage } from '../../page-objects/e2e-home.page'
-import { LoginPage } from '../../page-objects/e2e-login.page'
+import { LoginPage } from '../../page-objects/LoginPage'
 
 test.describe("Currency Exchange Form", () => {
     let homaPage: HomePage
@@ -10,7 +10,7 @@ test.describe("Currency Exchange Form", () => {
         homaPage = new HomePage(page)
         loginPage = new LoginPage(page)
 
-        homaPage.gotoIndex()
+        homaPage.visit()
         homaPage.clickOnSignIn()
         loginPage.login('username', 'password')
 
