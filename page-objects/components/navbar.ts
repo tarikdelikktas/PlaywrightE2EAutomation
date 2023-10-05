@@ -1,4 +1,4 @@
-import { expect, Page, type Locator } from "playwright/test";
+import { type Page, type Locator } from "playwright/test";
 
 export class NavBar {
     readonly page: Page
