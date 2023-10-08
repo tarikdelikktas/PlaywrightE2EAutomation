@@ -15,4 +15,5 @@ test('test', async ({ page }) => {
 });
 
 /* Note: can run them on terminal by 
-    npx playwright open --device "iPhone 11" wikipedia.org */
+    npx playwright open --device "iPhone 11" wikipedia.org
+    npx playwright pdf wikipedia.org wikis-file.pdf */
