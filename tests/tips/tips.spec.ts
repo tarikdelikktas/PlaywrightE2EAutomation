@@ -1,8 +1,11 @@
 import { test, expect } from "@playwright/test"
+import { getRandomNumber } from "../../utils/data-helpers"
 
 test.describe.only("Tips & Tricks", () => {
-    test("TestInfo Object", async ({ page }, testInfo) => {
+    test.only("TestInfo Object", async ({ page }, testInfo) => {
         await page.goto('https://www.example.com')
+        let newNumber = await getRandomNumber()
+        console.log(newNumber)
     })
 
     test("Test Skip Browser", async ({ page, browserName }) => {
@@ -32,7 +35,7 @@ test.describe.only("Tips & Tricks", () => {
         await page.mouse.up()
     })
 
-    test.only("Multiple Browser Tabs inside 1 Browser", async ({ browser }) => {
+    test("Multiple Browser Tabs inside 1 Browser", async ({ browser }) => {
         const context = await browser.newContext()  // created a new browser window
         const page1 = await context.newPage()  // create a new page inside a new browser window
         const page2 = await context.newPage()  // created a second page on the same context
