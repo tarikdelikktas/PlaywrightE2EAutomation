@@ -25,7 +25,7 @@ test.describe("New Payment", () => {
     })
 
     test("Should send the payment", async({ page, browserName }) => {
-        test.skip(browserName === 'webkit', "Feature not ready in webkit browser")
+        test.fixme(browserName === 'webkit', "Feature not ready in webkit browser")
 
         navBar.clickOnTab('Pay Bills')
 
