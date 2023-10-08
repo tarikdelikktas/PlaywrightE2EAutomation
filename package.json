@@ -14,7 +14,8 @@
     "tests:visual:chrome:update": "playwright test --config=visual.config.ts --project=Chromium --update-snapshots",
     "tests:visual:firefox:update": "playwright test --config=visual.config.ts --project=firefox --update-snapshots",
     "tests:visual:webkit:update": "playwright test --config=visual.config.ts --project=Webkit --update-snapshots",
-    "tests:api": "playwright test --config=api.config.ts --project=Chromium --reporter=line"
+    "tests:api": "playwright test --config=api.config.ts --project=Chromium --reporter=line",
+    "jenkins-server": "java -jar jenkins.war --httpPort=8080 --enable-future-java"
   },
   "author": "Tarik Deliktas",
   "license": "ISC",
