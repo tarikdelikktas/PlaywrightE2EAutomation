@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test'
 import { HomePage } from '../../page-objects/e2e-home.page'
-import { LoginPage } from '../../page-objects/LoginPage'
+import { LoginPage } from '../../page-objects/e2e-login.page'
 
 test.describe("Currency Exchange Form", () => {
     let homaPage: HomePage
@@ -10,9 +10,9 @@ test.describe("Currency Exchange Form", () => {
         homaPage = new HomePage(page)
         loginPage = new LoginPage(page)
 
-        homaPage.visit()
-        homaPage.clickOnSignIn()
-        loginPage.login('username', 'password')
+        await homaPage.visit()
+        await homaPage.clickOnSignIn()
+        await loginPage.login('username', 'password')
 
         // SSL Certificate error fix by directing url to tranfer-funds after login
         await page.goto('http://zero.webappsecurity.com/bank/account-activity.html')
@@ -30,8 +30,8 @@ test.describe("Currency Exchange Form", () => {
         await page.click("#pc_inDollars_true")
         await page.click("#pc_calculate_costs")
 
-        const coversAmmount = await page.locator("#pc_conversion_amount")
-        await expect(coversAmmount).toContainText("1000.00 U.S dollar (USD)")
+        const conversionAmount = await page.locator('#pc_conversion_amount')
+        await expect(conversionAmount).toContainText('1000.00 U.S. dollar (USD)')
 
         await page.click("#purchase_cash")
 

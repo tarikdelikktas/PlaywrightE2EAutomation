@@ -10,7 +10,7 @@ export class NavBar {
     readonly onlineStatements: Locator
 
     constructor(page: Page) {
-        this.page = Page
+        this.page = page
         this.accountSummary = page.locator("#account_summary_tab")
         this.accountActivity = page.locator("#account_activity_tab")
         this.transferFunds = page.locator("#transfer_funds_tab")

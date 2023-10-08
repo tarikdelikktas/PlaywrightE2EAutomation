@@ -10,9 +10,9 @@ test.describe("Filter Transactions from Account Activity", () => {
         homaPage = new HomePage(page)
         loginPage = new LoginPage(page)
 
-        homaPage.gotoIndex()
-        homaPage.clickOnSignIn()
-        loginPage.login('username', 'password')
+        await homaPage.visit()
+        await homaPage.clickOnSignIn()
+        await loginPage.login('username', 'password')
 
         // SSL Certificate error fix by directing url to tranfer-funds after login
         await page.goto('http://zero.webappsecurity.com/bank/account-activity.html')
@@ -22,19 +22,19 @@ test.describe("Filter Transactions from Account Activity", () => {
         await page.click("#account_activity_tab")
 
         // Select option for Checking account
-        await page.selectOption("#aa_accountId", "2")
+        await page.selectOption('#aa_accountId', '2')
 
         // Verify the number of data in checking account table
         const checkingAccount = await page.locator(
-            "all_transactions_for_account tbody tr"
+            '#all_transactions_for_account tbody tr'
         )
         await expect(checkingAccount).toHaveCount(3) // 3 record in table
 
         // Select option for Loan
-        await page.selectOption("#aa_accountId", "3")
+        await page.selectOption("#aa_accountId", "4")
         // Verify the number of data in checking account table
         const loanAccount = await page.locator(
-            "all_transactions_for_account tbody tr"
+            '#all_transactions_for_account tbody tr'
         )
         await expect(loanAccount).toHaveCount(2)  // 2 record in table
 

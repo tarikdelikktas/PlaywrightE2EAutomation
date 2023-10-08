@@ -14,7 +14,7 @@ export class HomePage {
     }
 
     async visit() {
-        await this.page.goto('http://zero.webappsecurity.com/index.html')
+        await this.page.goto('http://zero.webappsecurity.com/')
     }
 
     async clickOnSignIn() {

@@ -10,9 +10,9 @@ test.describe("Transfer Funds and Make Payments", () => {
         homaPage = new HomePage(page)
         loginPage = new LoginPage(page)
 
-        homaPage.gotoIndex()
-        homaPage.clickOnSignIn()
-        loginPage.login('username', 'password')
+        await homaPage.visit()
+        await homaPage.clickOnSignIn()
+        await loginPage.login('username', 'password')
 
         // SSL Certificate error fix by directing url to tranfer-funds after login
         await page.goto('http://zero.webappsecurity.com/bank/transfer-funds.html')
@@ -22,7 +22,7 @@ test.describe("Transfer Funds and Make Payments", () => {
         await page.selectOption("#tf_fromAccountId", "2")
         await page.selectOption("#tf_toAccountId", "3")
         await page.type("#tf_amount", "1000")
-        await page.type("tf_description", "Transfer Payment Message")
+        await page.type("#tf_description", "Transfer Payment Message")
         await page.click("#btn_submit")
 
         // Verify the content

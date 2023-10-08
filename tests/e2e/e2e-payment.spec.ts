@@ -16,9 +16,9 @@ test.describe("New Payment", () => {
         paymentPage = new PaymentPage(page)
         navBar = new NavBar(page)
 
-        homaPage.gotoIndex()
-        homaPage.clickOnSignIn()
-        loginPage.login('username', 'password')
+        await homaPage.visit()
+        await homaPage.clickOnSignIn()
+        await loginPage.login('username', 'password')
 
         // SSL Certificate error fix by directing url
         await page.goto('http://zero.webappsecurity.com/bank/pay-bills.html')
