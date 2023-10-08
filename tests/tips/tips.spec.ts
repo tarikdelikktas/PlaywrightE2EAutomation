@@ -31,4 +31,16 @@ test.describe.only("Tips & Tricks", () => {
         await page.mouse.move(0, 100)
         await page.mouse.up()
     })
+
+    test.only("Multiple Browser Tabs inside 1 Browser", async ({ browser }) => {
+        const context = await browser.newContext()  // created a new browser window
+        const page1 = await context.newPage()  // create a new page inside a new browser window
+        const page2 = await context.newPage()  // created a second page on the same context
+        const page3 = await context.newPage()  // same here
+
+        await page1.goto('https://www.example.com')
+        await page2.goto('https://www.example.com')
+        await page3.goto('https://www.example.com')
+        await page1.waitForTimeout(5000)
+    })
 })
