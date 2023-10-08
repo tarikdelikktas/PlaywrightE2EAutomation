@@ -24,7 +24,9 @@ test.describe("New Payment", () => {
         await page.goto('http://zero.webappsecurity.com/bank/pay-bills.html')
     })
 
-    test("Should send the payment", async({ page }) => {
+    test("Should send the payment", async({ page, browserName }) => {
+        test.skip(browserName === 'webkit', "Feature not ready in webkit browser")
+
         navBar.clickOnTab('Pay Bills')
 
         await paymentPage.createPayment()
